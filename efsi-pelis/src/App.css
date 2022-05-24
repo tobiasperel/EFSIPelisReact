@@ -154,6 +154,8 @@
   .card {
       display: inline-block;
       margin: 5px;
+      max-height: 560px;
+      overflow: hidden;
   }
   #card {
     display: inline-block;

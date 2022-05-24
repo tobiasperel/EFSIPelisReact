@@ -1,21 +1,20 @@
-import { React, Component } from 'react';
+import { React } from 'react';
 import Card from './Card';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class CarrouselCard extends Component {
-    render() {
-        return (
-            <div className="carrousel-cards mb-4">
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
+const CarrouselCard = ({ movies }) => {
+    return (
+        <div className="carrousel-cards mb-4">
+                { movies.map(movie =>{
+                    return(
+                        <Card movie={movie}/>
+                    )
+                })}
             </div>
-        );
-    }
+    )
 }
+
+
 
 export default CarrouselCard;

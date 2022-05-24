@@ -5,7 +5,7 @@ import '../App.css';
 class SearchBar extends Component {
     render() {
         return (
-            <div classNames="d-flex justify-content-center h-100 mb-2">
+            <div className="d-flex justify-content-center h-100 mb-2">
                 <div className="search">
                     <input type="text" className="search-input" placeholder="Buscar..." name="" />
                     <a href="#" className="search-icon">
