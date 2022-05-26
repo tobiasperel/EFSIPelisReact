@@ -38,11 +38,11 @@ function App() {
   },[])
 
   return (
-    (dataPeliculaBase!==null) && //si data es distinto a null renderizalo && --> entonces
+    (dataPeliculaBase!==null) && //si data es distinto a null renderizalo && --> si sin posibilidad de else
     <>
       <Navbar/>
       <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
-      {(dataJsonSearch.length !== 0) ? //entonces
+      {(dataJsonSearch.length !== 0) ? //si con ogligacion de un else
       <CarrouselCard movies={dataJsonSearch.results}/> : //else
       <CarrouselCard movies={dataPeliculaBase.results}/>        
     }
