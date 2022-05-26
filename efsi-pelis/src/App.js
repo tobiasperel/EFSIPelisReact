@@ -39,15 +39,19 @@ function App() {
 
   return (
     (dataPeliculaBase!==null) && //si data es distinto a null renderizalo && --> si sin posibilidad de else
-    <>
-      <Navbar/>
-      <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
-      {(dataJsonSearch.length !== 0) ? //si con ogligacion de un else
-      <CarrouselCard movies={dataJsonSearch.results}/> : //else
-      <CarrouselCard movies={dataPeliculaBase.results}/>        
-    }
-      <Tagbar/>
-    </>
+      <>
+        <Navbar/>
+        <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
+        {(dataJsonSearch.length !== 0) ? //si con ogligacion de un else
+        <>
+        <h2>Buscando...</h2>
+        <CarrouselCard movies={dataJsonSearch.results}/> 
+        </>
+        : //else
+        <CarrouselCard movies={dataPeliculaBase.results}/>        
+      }
+        <Tagbar/>
+      </>
   );
 }
 
