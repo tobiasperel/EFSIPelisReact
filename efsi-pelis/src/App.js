@@ -38,7 +38,7 @@ function App() {
   },[])
 
   return (
-    (dataPeliculaBase) && //si data es distinto a null renderizalo 
+    (dataPeliculaBase!==null) && //si data es distinto a null renderizalo && --> entonces
     <>
       <Navbar/>
       <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
