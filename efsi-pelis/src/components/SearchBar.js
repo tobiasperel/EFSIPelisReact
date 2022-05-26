@@ -4,7 +4,6 @@ import '../App.css';
 
 const SearchBar = ({ dataSearch, onChange }) => {
 
-    
     return (
         <div className="d-flex justify-content-center h-100 mb-2">
             <div className="search">

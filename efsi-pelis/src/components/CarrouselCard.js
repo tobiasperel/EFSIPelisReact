@@ -6,9 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const CarrouselCard = ({ movies }) => {
     return (
         <div className="carrousel-cards mb-4">
-            { movies.map(movie =>{
+            { movies.map((movie, index) =>{
                 return(
-                    <Card movie={movie}/>
+                    <Card key={index} movie={movie}/>
                 )
             })}
         </div>

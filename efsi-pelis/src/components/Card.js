@@ -4,7 +4,6 @@ import '../App.css';
 import axios from 'axios'
 
 const Card = ({ movie }) => {
-
     return (
         <div className="card" id="card">
                 <img src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`} className="card-img-top"
