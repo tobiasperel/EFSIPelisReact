@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 
-const TagA = ({ nombre }) => {
+const TagA = ({ nombre, onChangeTagName, filter }) => {
     return (
         <div className="tagBackground">
-            <a className="nav-link" href="#">{nombre}</a>
+            <button className="nav-link" onClick={() => onChangeTagName(filter)}>{nombre}</button>
         </div>
     );
 }
