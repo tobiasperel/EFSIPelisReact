@@ -88,7 +88,6 @@ code {
   }
   
   .search-icon:hover{
-      background:#1A237E;
       color:#fff;
   }
   .search-icon{
@@ -100,9 +99,7 @@ code {
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
-      background-color: #536bf6;
-  
+      color: white;  
   }
   a:link{
       text-decoration: none;

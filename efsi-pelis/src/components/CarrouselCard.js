@@ -6,12 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const CarrouselCard = ({ movies }) => {
     return (
         <div className="carrousel-cards mb-4">
-                { movies.map(movie =>{
-                    return(
-                        <Card movie={movie}/>
-                    )
-                })}
-            </div>
+            { movies.map(movie =>{
+                return(
+                    <Card movie={movie}/>
+                )
+            })}
+        </div>
     )
 }
 

@@ -14,7 +14,7 @@ const Card = ({ movie }) => {
                         <p className="card-text">{movie.overview}</p>
                 </div>
             </div>
-        );
+    );
 }
 
 

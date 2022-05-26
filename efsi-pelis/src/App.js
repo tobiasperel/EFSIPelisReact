@@ -11,20 +11,35 @@ import axios from 'axios'
 function App() {
   const apiKey = 'e24778f87f41a95412e12bf4ba364165'
 
-  const [data, setData] = useState(null)
+  const [dataSearch, setDataSearch] = useState("")
+  const onChangeSearch = async (query) => {
+      setDataSearch(query.target.value)
+  }
+
   useEffect(() => {
+    (async() => {
+      if (dataSearch !== "") {
+        const res = await axios.get(`https://api.themoviedb.org/3/search/company?api_key=${apiKey}&query=${dataSearch}&page=1`)
+        console.log(res.data)
+      }
+    })()
+  },[dataSearch])
+
+  const [data, setData] = useState(null) //Cada vez que hay un cambio en el componenete se ejecuta
+  useEffect(() => { // Solo al principio o, si tiene un coso en el ultimo corchete que cambia
       (async() =>{
-          const res = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`)
-          console.log(res.data)
-          setData(res.data)
+        const res = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`)
+        console.log(res.data)
+        setData(res.data)
       })()
   },[])
 
   return (
-    data&&
+    data&& //si data es distinto a null renderizalo 
     <>
       <Navbar/>
-      <SearchBar/>
+      <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
+      <CarrouselCard movies={data.results}/>
       <Tagbar/>
       <CarrouselCard movies={data.results}/>
     </>
