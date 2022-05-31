@@ -16,7 +16,9 @@ function App() {
   const [dataJsonSearch, setDataJsonSearch] = useState([])
   const [tagName, setTagName] = useState("popular")
   const [onMovie, setOnMovie] = useState(false)
-  const [unaPelcula, setUnaPelicula] = useState(null)
+  const [unaPelicula, setUnaPelicula] = useState(-1)
+  const [unaPeliculaData, setUnaPeliculaData] = useState([])
+
   const onChangeSearch = async (query) => {
     setDataSearch(query.target.value)
   }
@@ -26,7 +28,7 @@ function App() {
     setTagName(query)
   }
 
-  const onMovieClic = async (boolValue) => {
+  const onMovieClic = async (boolValue, movieId) => {
     if (boolValue){
       setOnMovie(false)
       console.log("hola:"+boolValue)
@@ -34,14 +36,16 @@ function App() {
       setOnMovie(true)
       console.log(boolValue)
     }
+    setUnaPelicula(movieId)
   }
   
   useEffect(() => {
     (async() => {
-      const res = await axios.get(`https://api.themoviedb.org/3/movie/{movie_id}?api_key=${apiKey}`)
-      setUnaPelicula(res.data)
+      const res = await axios.get(`https://api.themoviedb.org/3/movie/${unaPelicula}?api_key=${apiKey}`)
+      setUnaPeliculaData(res.data)
+      console.log(res)
     })()
-  },[unaPelcula])
+  },[unaPelicula])
 
   useEffect(() => { // cada vez que tipeo en el input se corre
     (async() => {
@@ -69,7 +73,8 @@ function App() {
         <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
         {(onMovie) ?
           <>
-            <SpecificMovie movie={}/>
+            <h1>PELICULA SPEF</h1>
+            <SpecificMovie movie={unaPeliculaData}/>
           </>
         :
           (dataJsonSearch.length !== 0) ? //si con ogligacion de un else
