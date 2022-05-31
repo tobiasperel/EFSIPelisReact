@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Tagbar from './components/Tagbar';
 import SearchBar from './components/SearchBar';
 import axios from 'axios'
+import SpecificMovie from './components/SpecificMovie';
 
 function App() {
   const apiKey = 'e24778f87f41a95412e12bf4ba364165'
@@ -14,7 +15,8 @@ function App() {
   const [dataPeliculaBase, setDataPeliculaBase] = useState(null) //Cada vez que hay un cambio en el componenete se ejecuta
   const [dataJsonSearch, setDataJsonSearch] = useState([])
   const [tagName, setTagName] = useState("popular")
-
+  const [onMovie, setOnMovie] = useState(false)
+  const [unaPelcula, setUnaPelicula] = useState(null)
   const onChangeSearch = async (query) => {
     setDataSearch(query.target.value)
   }
@@ -23,6 +25,23 @@ function App() {
     console.log(query);
     setTagName(query)
   }
+
+  const onMovieClic = async (boolValue) => {
+    if (boolValue){
+      setOnMovie(false)
+      console.log("hola:"+boolValue)
+    } else {
+      setOnMovie(true)
+      console.log(boolValue)
+    }
+  }
+  
+  useEffect(() => {
+    (async() => {
+      const res = await axios.get(`https://api.themoviedb.org/3/movie/{movie_id}?api_key=${apiKey}`)
+      setUnaPelicula(res.data)
+    })()
+  },[unaPelcula])
 
   useEffect(() => { // cada vez que tipeo en el input se corre
     (async() => {
@@ -38,7 +57,6 @@ function App() {
 
   useEffect(() => { // peliculas base
       (async() =>{
-        console.log(tagName);
         const res = await axios.get(`https://api.themoviedb.org/3/movie/${tagName}?api_key=${apiKey}`)
         setDataPeliculaBase(res.data)
       })()
@@ -49,17 +67,23 @@ function App() {
       <>
         <Navbar/>
         <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
-        {(dataJsonSearch.length !== 0) ? //si con ogligacion de un else
-        <>
-          <h2>Buscando...</h2>
-          <CarrouselCard movies={dataJsonSearch.results}/> 
-        </>
-        : //else
-        <>
-          <Tagbar onChangeTagName={onChangeTagName}/>
-          <CarrouselCard movies={dataPeliculaBase.results}/>        
-        </>
-      }
+        {(onMovie) ?
+          <>
+            <SpecificMovie movie={}/>
+          </>
+        :
+          (dataJsonSearch.length !== 0) ? //si con ogligacion de un else
+          <>
+            <h2>Buscando...</h2>
+            <CarrouselCard onMovieButton={onMovieClic} movies={dataJsonSearch.results}/> 
+          </>
+          : //else
+          <>
+            <Tagbar onChangeTagName={onChangeTagName}/>
+            <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>        
+          </>
+        }
+      
       </>
   );
 }
