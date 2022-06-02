@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import logo from './logo.svg';
 import './App.css';
+import './Movies.css';
 import Navbar from './components/Navbar'
 import CarrouselCard from './components/CarrouselCard';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -70,26 +71,25 @@ function App() {
     (dataPeliculaBase!==null) && //si data es distinto a null renderizalo && --> si sin posibilidad de else
       <>
         <Navbar/>
-        <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
         {(onMovie) ?
           <>
-            <h1>PELICULA SPEF</h1>
             <SpecificMovie movie={unaPeliculaData} salirBoton={() => setOnMovie(false)} elenco = {creditos}/>
-            
           </>
         :
           (dataJsonSearch.length !== 0) ? //si con ogligacion de un else
           <>
+            <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
             <h2>Buscando...</h2>
             <CarrouselCard onMovieButton={onMovieClic} movies={dataJsonSearch.results}/> 
           </>
           : //else
           <>
+            <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
             <Tagbar onChangeTagName={onChangeTagName}/>
             <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>    
           </>
         }
-      
+        
       </>
   );
 }

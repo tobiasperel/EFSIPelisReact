@@ -13,17 +13,8 @@
   }
 }
 
-.focusMovie{
-  display: flex;
-  flex-direction: row;
-  margin-left: 30vh;
-  margin-right: 30vh;
-}
 
 
-.focusImage {
-  size: 10vh;
-}
 
 .App-header {
   background-color: #282c34;
@@ -151,8 +142,6 @@
       text-decoration: none;
   }
 
-  body {
-  }
 
   .carrousel-cards{
       white-space: nowrap;

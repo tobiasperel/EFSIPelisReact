@@ -1,0 +1,13 @@
+.focusMovie{
+	display: flex;
+	margin-left: 20vh;
+	margin-right: 20vh;
+}
+
+.InfoMovie{
+	flex-direction: column;
+}
+
+.focusImage {
+	size: 10rem;
+}
