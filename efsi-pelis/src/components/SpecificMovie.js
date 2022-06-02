@@ -16,6 +16,14 @@ const SpecificMovie = ({ movie , salirBoton, elenco}) => {
                 //if(index <4) { }
                 return index < 4 && (persona.name)
             })}  
+            { movie.genres.map((genero, index) => {
+                return(
+                    <p>{genero.name}</p>
+                )
+            })}
+            { movie.adult &&
+                <h3>sdasd</h3>
+            }
             <button onClick={salirBoton}>Cerrar</button>
             
             

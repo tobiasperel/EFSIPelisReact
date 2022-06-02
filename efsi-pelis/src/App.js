@@ -16,7 +16,7 @@ function App() {
   const [dataJsonSearch, setDataJsonSearch] = useState([])
   const [tagName, setTagName] = useState("popular")
   const [onMovie, setOnMovie] = useState(false)
-  const [unaPelicula, setUnaPelicula] = useState(-1)
+  const [unaPelicula, setUnaPelicula] = useState(2)
   const [unaPeliculaData, setUnaPeliculaData] = useState([])
   const [creditos, setCreditos] = useState([])
   const onChangeSearch = async (query) => {
@@ -31,10 +31,8 @@ function App() {
   const onMovieClic = async (boolValue, movieId) => {
     if (boolValue){
       setOnMovie(false)
-      console.log("hola:"+boolValue)
     } else {
       setOnMovie(true)
-      console.log(boolValue)
     }
     setUnaPelicula(movieId)
   }
@@ -44,7 +42,6 @@ function App() {
       const res = await axios.get(`https://api.themoviedb.org/3/movie/${unaPelicula}?api_key=${apiKey}`)
       setUnaPeliculaData(res.data)
       const res2 = await axios.get(`https://api.themoviedb.org/3/movie/${unaPelicula}/credits?api_key=${apiKey}`)
-      console.log(res2.data.cast)
       setCreditos(res2.data.cast)
     })()
   },[unaPelicula])
@@ -66,7 +63,6 @@ function App() {
       (async() =>{
         const res = await axios.get(`https://api.themoviedb.org/3/movie/${tagName}?api_key=${apiKey}`)
         setDataPeliculaBase(res.data)
-        console.log(res.data);
       })()
   },[tagName])
 
@@ -91,7 +87,6 @@ function App() {
           <>
             <Tagbar onChangeTagName={onChangeTagName}/>
             <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>    
-            <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>          
           </>
         }
       
