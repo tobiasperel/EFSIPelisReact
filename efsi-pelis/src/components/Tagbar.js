@@ -7,7 +7,7 @@ import TagA from './TagA'
 const Tagbar = ({ onChangeTagName }) => {
     return (
         <div className="d-flex flex-row ml-3 my-3 ">
-            <h3>Popular</h3>
+            <h3>Tags</h3>
             <nav className="nav">
                 <TagA nombre="Populares" onChangeTagName={onChangeTagName} filter="popular" />
                 <TagA nombre= "En emision" onChangeTagName={onChangeTagName} filter="now_playing"/>

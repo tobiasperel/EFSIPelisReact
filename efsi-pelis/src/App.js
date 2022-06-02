@@ -63,6 +63,7 @@ function App() {
       (async() =>{
         const res = await axios.get(`https://api.themoviedb.org/3/movie/${tagName}?api_key=${apiKey}`)
         setDataPeliculaBase(res.data)
+        console.log(res.data);
       })()
   },[tagName])
 
@@ -74,7 +75,8 @@ function App() {
         {(onMovie) ?
           <>
             <h1>PELICULA SPEF</h1>
-            <SpecificMovie movie={unaPeliculaData}/>
+            <SpecificMovie movie={unaPeliculaData} salirBoton={() => setOnMovie(false)}/>
+            
           </>
         :
           (dataJsonSearch.length !== 0) ? //si con ogligacion de un else
@@ -85,7 +87,8 @@ function App() {
           : //else
           <>
             <Tagbar onChangeTagName={onChangeTagName}/>
-            <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>        
+            <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>    
+            <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>          
           </>
         }
       
