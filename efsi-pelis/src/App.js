@@ -18,7 +18,7 @@ function App() {
   const [onMovie, setOnMovie] = useState(false)
   const [unaPelicula, setUnaPelicula] = useState(-1)
   const [unaPeliculaData, setUnaPeliculaData] = useState([])
-
+  const [creditos, setCreditos] = useState([])
   const onChangeSearch = async (query) => {
     setDataSearch(query.target.value)
   }
@@ -43,9 +43,12 @@ function App() {
     (async() => {
       const res = await axios.get(`https://api.themoviedb.org/3/movie/${unaPelicula}?api_key=${apiKey}`)
       setUnaPeliculaData(res.data)
-      console.log(res)
+      const res2 = await axios.get(`https://api.themoviedb.org/3/movie/${unaPelicula}/credits?api_key=${apiKey}`)
+      console.log(res2.data.cast)
+      setCreditos(res2.data.cast)
     })()
   },[unaPelicula])
+
 
   useEffect(() => { // cada vez que tipeo en el input se corre
     (async() => {
@@ -75,7 +78,7 @@ function App() {
         {(onMovie) ?
           <>
             <h1>PELICULA SPEF</h1>
-            <SpecificMovie movie={unaPeliculaData} salirBoton={() => setOnMovie(false)}/>
+            <SpecificMovie movie={unaPeliculaData} salirBoton={() => setOnMovie(false)} elenco = {creditos}/>
             
           </>
         :
