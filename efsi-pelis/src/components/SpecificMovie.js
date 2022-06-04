@@ -5,8 +5,13 @@ import '../Movies.css';
 
 const SpecificMovie = ({ movie , salirBoton, elenco}) => {
 
-    
 
+    function forAdult(adultValue){
+        if (adultValue){
+            return <p className="text-danger">LOL</p>
+        }
+    }
+    
     return (
         <div className="focusMovie">
             <img src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`} className="focusImage" alt="..."/>
@@ -15,9 +20,9 @@ const SpecificMovie = ({ movie , salirBoton, elenco}) => {
                 <p>{movie.overview}</p>
                 <p>Elenco: </p>
                 { elenco.map((persona, index) => {
-                    //if(index <4) { }
                     return index < 4 && (persona.name)
                 })}  
+                { forAdult(movie.adult) }
                 { movie.genres.map((genero, index) => {
                     return(
                         <p>{genero.name}</p>

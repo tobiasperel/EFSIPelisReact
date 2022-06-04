@@ -9,6 +9,7 @@ import Tagbar from './components/Tagbar';
 import SearchBar from './components/SearchBar';
 import axios from 'axios'
 import SpecificMovie from './components/SpecificMovie';
+import Footer from './components/Footer';
 
 function App() {
   const apiKey = 'e24778f87f41a95412e12bf4ba364165'
@@ -85,11 +86,13 @@ function App() {
           : //else
           <>
             <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
-            <Tagbar onChangeTagName={onChangeTagName}/>
-            <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>    
+            <Tagbar onChangeTagName={onChangeTagName} nameTag={"Peliculas"} />
+            <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>
+            <Tagbar onChangeTagName={onChangeTagName} nameTag={"Series"}/>
+            <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/> 
           </>
         }
-        
+        <Footer/>
       </>
   );
 }

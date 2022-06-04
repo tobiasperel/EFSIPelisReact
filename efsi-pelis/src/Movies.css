@@ -1,13 +1,152 @@
+:root {
+	--local-white: #EEEBDD;
+	--local-black: #1B1717;
+	--local-black-dark: #141111;
+	--local-red: #810000;
+	--local-red-dark: #630000;
+}
+
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+body{
+	background-color: var(--local-black)!important;
+	color: var(--local-white)!important;
+}
+
+/*navbar*/
+.bg-local-dark{
+	background-color: var(--local-black-dark);
+	color: var(--local-white);
+}	
+
+/*titles*/
+.title-type{
+	font-size: 2.3rem;
+	font-weight: bold;
+	color: var(--local-white);
+	margin-left: 1.5vh;
+}
+.tag {
+	background-color: var(--local-black-dark);
+	border-radius: 20px;
+	border-width: 0ch;
+	margin-left: 20px;
+	color: var(--local-white);
+	padding: 0px 20px;
+}
+
+/*¨*/
+#card {
+    margin-inline: 20px;
+    overflow: hidden;
+    display: flex;
+    width: 15vw;
+    background-color: var(--local-black-dark);
+}
+
+.card-title{
+	display: none;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+    white-space: normal;
+	text-align: justify; 
+	display: none;
+	position: absolute;
+	top: 3vh;
+	left: 1.4vh;
+	right: 1.4vh;
+}
+
+.card-description{
+	font-size: 1rem!important;
+	margin-top: 1.3vh;
+	margin-left: .3vh;
+	display: none;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+    white-space: normal;
+	text-align: justify; 
+	overflow: auto;
+	max-height: 30vh;
+	padding-right: 4px;
+}
+
+.card-age{
+	display: none;
+	position: absolute;
+	bottom: 1vh;
+	right: 1.4vh;
+}
+
+#card:hover img{
+	opacity: 0.14;
+	transition: .3s;
+}
+
+#card:hover .card-description {
+	display: block;
+}
+
+#card:hover .card-title {
+	display: block;
+}
+
+#card:hover .card-age {
+	display: block;
+}
+
+/*Footer*/
+.footer{
+	background-color: var(--local-black-dark);
+}
+
+
+.local-logo {
+	margin-left: 2vh;
+	
+}
+
 .focusMovie{
 	display: flex;
-	margin-left: 20vh;
-	margin-right: 20vh;
 }
 
 .InfoMovie{
 	flex-direction: column;
+	margin-right: auto;
+    margin-left: auto;
 }
 
 .focusImage {
-	size: 10rem;
 }
+
+.card-description::-webkit-scrollbar {
+	opacity: 0.2;
+	width: 5px;
+	height: 5px;
+  }
+  .card-description::-webkit-scrollbar-thumb {
+	background-color: #11171a;
+	border-radius: 10px;
+  }
+
+  .card-description::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+  }
+  .card-descriptioncard-description::-webkit-scrollbar-track {
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+  }
+  .card-description::-webkit-scrollbar-thumb {
+	background-color: #11171a;
+	border-radius: 10px;
+  }
+

@@ -8,12 +8,13 @@ const CarrouselCard = ({ onMovieButton, movies }) => {
         <div className="carrousel-cards mb-4">
             { movies.map((movie, index) =>{
                 return(
-                    <button onClick={() => onMovieButton(false, movie.id)}>
+                    <button className="card-button" onClick={() => onMovieButton(false, movie.id)}>
                         <Card key={index} movie={movie}/>
                     </button>
                 )
             })}
         </div>
+        
     )
 }
 

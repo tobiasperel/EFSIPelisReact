@@ -4,10 +4,10 @@ import '../App.css';
 import TagA from './TagA'
 
 
-const Tagbar = ({ onChangeTagName }) => {
+const Tagbar = ({ onChangeTagName, nameTag }) => {
     return (
         <div className="d-flex flex-row ml-3 my-3 ">
-            <h3>Tags</h3>
+            <h3 className='title-type'>{nameTag}</h3>
             <nav className="nav">
                 <TagA nombre="Populares" onChangeTagName={onChangeTagName} filter="popular" />
                 <TagA nombre= "En emision" onChangeTagName={onChangeTagName} filter="now_playing"/>
