@@ -14,7 +14,8 @@ const Tagbar = ({ onChangeTagName, nameTag, filtros }) => {
                         let nombre = filtro.split("_")
                         nombre.map(
                             function(nombrecito){
-                                nombre
+                            
+                            }
                         )
                         nombre = nombre[0] +" "+ nombre[1]
                         console.log(nombre);
