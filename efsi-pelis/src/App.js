@@ -15,8 +15,10 @@ function App() {
   const apiKey = 'e24778f87f41a95412e12bf4ba364165'
   const [dataSearch, setDataSearch] = useState("")
   const [dataPeliculaBase, setDataPeliculaBase] = useState(null) //Cada vez que hay un cambio en el componenete se ejecuta
+  const [dataSeriesBase, setDataSeriesBase] = useState(null)
   const [dataJsonSearch, setDataJsonSearch] = useState([])
   const [tagName, setTagName] = useState("popular")
+  const [tagNameSeries, setTagNameSeries] = useState("popular")
   const [onMovie, setOnMovie] = useState(false)
   const [unaPelicula, setUnaPelicula] = useState(2)
   const [unaPeliculaData, setUnaPeliculaData] = useState([])
@@ -28,6 +30,11 @@ function App() {
   const onChangeTagName = async (query) => {
     console.log(query);
     setTagName(query)
+  }
+
+  const onChangeTagNameSeries = async (query) => {
+    console.log(query);
+    setTagNameSeries(query)
   }
 
   const onMovieClic = async (boolValue, movieId) => {
@@ -68,6 +75,13 @@ function App() {
       })()
   },[tagName])
 
+  useEffect(() => { // series base
+    (async() =>{
+      const res = await axios.get(`https://api.themoviedb.org/3/tv/${tagNameSeries}?api_key=${apiKey}`)
+      setDataSeriesBase(res.data)
+    })()
+},[tagNameSeries])
+
   return (
     (dataPeliculaBase!==null) && //si data es distinto a null renderizalo && --> si sin posibilidad de else
       <>
@@ -86,10 +100,10 @@ function App() {
           : //else
           <>
             <SearchBar dataSearch={dataSearch} onChange={onChangeSearch}/>
-            <Tagbar onChangeTagName={onChangeTagName} nameTag={"Peliculas"} />
+            <Tagbar onChangeTagName={onChangeTagName} nameTag={"Peliculas"} filtros = {["popular", "now_playing", "upcoming"]} />
             <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/>
-            <Tagbar onChangeTagName={onChangeTagName} nameTag={"Series"}/>
-            <CarrouselCard onMovieButton={onMovieClic} movies={dataPeliculaBase.results}/> 
+            <Tagbar onChangeTagName={onChangeTagNameSeries} nameTag={"Series"} filtros = {["popular", "on_the_air", "airing_today", "top_rated"]} />
+            <CarrouselCard onMovieButton={onMovieClic} movies={dataSeriesBase.results}/> 
           </>
         }
         <Footer/>

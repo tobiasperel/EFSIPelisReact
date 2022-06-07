@@ -6,6 +6,15 @@
 	--local-red-dark: #630000;
 }
 
+@media (min-width: 1024px){
+	.card h3{
+		font-size: 1.35rem!important;
+	}
+	.card p{
+		font-size: .95rem!important;
+	}
+}
+
 button {
 	background: none;
 	color: inherit;
@@ -41,6 +50,28 @@ body{
 	margin-left: 20px;
 	color: var(--local-white);
 	padding: 0px 20px;
+}
+
+.tag-movie {
+	background-color: var(--local-red-dark)!important;
+	margin-left: 10px;
+}
+
+.close-button{
+	flex-direction: row;
+	align-items: flex-end;
+	font-size: 1.4rem!important;
+	background-color: var(--local-black-dark);
+	border-width: 0ch;
+	margin-left: 20px;
+	color: var(--local-white);
+	padding: 0px 20px;
+	height: 20%
+}
+
+.local-flex{
+	display: flex;
+	justify-content: end;
 }
 
 /*¨*/
@@ -106,6 +137,8 @@ body{
 /*Footer*/
 .footer{
 	background-color: var(--local-black-dark);
+	width: 100%;
+	bottom: 0;
 }
 
 
@@ -114,18 +147,29 @@ body{
 	
 }
 
-.focusMovie{
+.focus-movie{
 	display: flex;
 }
 
-.InfoMovie{
+
+.info-movie{
 	flex-direction: column;
 	margin-right: auto;
     margin-left: auto;
 }
 
-.focusImage {
+.image-movie{
+	width: 70%;
+	max-width: 100%; 
+	height: auto; 
+	margin-right: 5vw;
+	object-fit: contain;
 }
+
+.movie-elenco{
+	display: inline;
+}
+
 
 .card-description::-webkit-scrollbar {
 	opacity: 0.2;

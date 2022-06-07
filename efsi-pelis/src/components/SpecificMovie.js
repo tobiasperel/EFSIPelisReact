@@ -13,22 +13,36 @@ const SpecificMovie = ({ movie , salirBoton, elenco}) => {
     }
     
     return (
-        <div className="focusMovie">
-            <img src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`} className="focusImage" alt="..."/>
-            <div className="InfoMovie">
+        <div className="container mt-5 focus-movie">
+            <img src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`} className="image-movie" alt="..."/>
+            <div className="info-movie">
                 <h2>{movie.title}</h2>
                 <p>{movie.overview}</p>
-                <p>Elenco: </p>
-                { elenco.map((persona, index) => {
-                    return index < 4 && (persona.name)
-                })}  
+                <h5>Elenco: </h5>
+                <div className="movie-elenco">
+                    { elenco.map((persona, index) => {
+                        if (index < 5){
+                            return (
+                                <p className="movie-elenco">{persona.name}, </p>
+                            )
+                        }
+                        else if (index <= 5){
+                            return (
+                                <p className="movie-elenco">{persona.name}.</p>
+                            )
+                        }
+                    })}  
+                </div>
                 { forAdult(movie.adult) }
+                <h5 className='mt-3'>Generos: </h5>
                 { movie.genres.map((genero, index) => {
                     return(
-                        <p>{genero.name}</p>
+                        <p className='movie-elenco tag tag-movie'>{genero.name}</p>
                     )
                 })}
-                <button onClick={salirBoton}>Cerrar</button>
+                <div className="local-flex">
+                    <button className="close-button" onClick={salirBoton}>Cerrar</button>
+                </div>
             </div>
         </div>
     )
