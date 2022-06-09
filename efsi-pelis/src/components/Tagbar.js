@@ -12,15 +12,16 @@ const Tagbar = ({ onChangeTagName, nameTag, filtros }) => {
                 {filtros.map(
                     function(filtro){
                         let nombre = filtro.split("_")
+                        let superNombre = ""
                         nombre.map(
                             function(nombrecito){
-                            
+                                superNombre += nombrecito + " "
                             }
                         )
-                        nombre = nombre[0] +" "+ nombre[1]
-                        console.log(nombre);
+                        let primeraLetra = superNombre.charAt(0).toUpperCase()
+                        superNombre = primeraLetra + superNombre.slice(1)
                         return(
-                            <TagA nombre={filtro.toUpperCase()} onChangeTagName={onChangeTagName} filter={filtro} />
+                            <TagA nombre={superNombre} onChangeTagName={onChangeTagName} filter={filtro} />
                         )
                     }
                 )}
