@@ -13,7 +13,7 @@ const SpecificMovie = ({ movie , salirBoton, elenco}) => {
     }
     
     return (
-        <div className="container mt-5 focus-movie">
+        <div className="container mt-5 d-flex">
             <img src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`} className="image-movie" alt="..."/>
             <div className="info-movie">
                 <h2>{movie.title}</h2>

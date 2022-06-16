@@ -11,7 +11,7 @@ const Footer = () => {
                     <div className="col-md-7 col-lg-8 text-center text-md-start">
                         <div className="p-3">
                             © 2020 Copyright: 
-                            <a className="text-white" target="_blank" href="https://www.youtube.com/watch?v=3PGyXr1ux20"> Sebastian Biorci & TobiasPerel</a>
+                            <a className="text-white" target="_blank" href="https://www.youtube.com/watch?v=3PGyXr1ux20"> Sebastian Biorci & Tobias Perel</a>
                         </div>
                     </div>
                     <div className="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">

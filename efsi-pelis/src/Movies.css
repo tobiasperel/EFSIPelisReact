@@ -147,11 +147,6 @@ body{
 	
 }
 
-.focus-movie{
-	display: flex;
-}
-
-
 .info-movie{
 	flex-direction: column;
 	margin-right: auto;
@@ -159,11 +154,8 @@ body{
 }
 
 .image-movie{
-	width: 70%;
-	max-width: 100%; 
-	height: auto; 
 	margin-right: 5vw;
-	object-fit: contain;
+	object-fit: cover;
 }
 
 .movie-elenco{
@@ -193,4 +185,3 @@ body{
 	background-color: #11171a;
 	border-radius: 10px;
   }
-
